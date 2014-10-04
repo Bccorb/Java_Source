@@ -1,27 +1,23 @@
+//******************************************************************************************************
+//Program:		Driver.Java
+//Programmer:		Brandon Corbett
+//Date:			Sept 17, 2014
+//Description:		Creates an object that is capable of several different types of loops and algorithms
+//*******************************************************************************************************
 package lab2;
 
 public class Driver {
 
 	public static void main(String[] args) 
 	{
-		//Creates a loop object
-		loop1 alg = new loop1();
-		
-		//Sets up the beginning variables for the first loop test and runs loop one.
-		long startTime = System.currentTimeMillis();
-		alg.run(5484);
-		long endTime = System.currentTimeMillis();
-		long totalTime = endTime - startTime;
-		System.out.println(totalTime);
+		System.out.println("Welcom to a Algorithm test system. You can have a better understanding of BigO notation and the effect it has on \n"
+				+ "the time it takes to complete a task through this system(measured in milliseconds).");
 		
 		System.out.println();
 		
-		//Sets up the variables for the second loop test and runs loop two.
-		startTime = System.currentTimeMillis();
-		alg.run2(5484);
-		endTime = System.currentTimeMillis();
-		totalTime = endTime - startTime;
-		System.out.println(totalTime);
+		//Creates a loop object
+		loop1 loop = new loop1();
 		
+		loop.menu();	
 	}
 }
