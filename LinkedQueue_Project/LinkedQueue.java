@@ -16,7 +16,12 @@ public class LinkedQueue<T> implements QueueADT<T>
 		head = tail = null;
 	}
 
-	@Override
+	/**
+	 * 
+	 * @Override
+	 * @param element element to be added to the queue
+	 */
+	
 	public void enqueue(T element) 
 	{
 		LinearNode<T> node = new LinearNode<T>(element);
@@ -29,12 +34,14 @@ public class LinkedQueue<T> implements QueueADT<T>
 		tail = node;
 		count++;
 	}
-
-	@Override
+	
+	/**
+	 * 
+	 * @Override
+	 * removes the first element in the queue
+	 */ 
 	public T dequeue() 
 	{
-	//	if (isEmpty())
-	//		throw new EmptyCollectionException("queue");
 		
 		T result = head.getElement();
 		head = head.getNext();
