@@ -1,3 +1,8 @@
+/**
+ * 
+ * @author bcorbett
+ * @version 1.0
+ */
 public class CircularArrayQueue<T> implements QueueADT<T> 
 {
 	private final static int DEFAULT_CAPACITY = 50;
