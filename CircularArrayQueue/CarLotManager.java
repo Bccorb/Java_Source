@@ -1,4 +1,8 @@
-
+/**
+ * 
+ * @author bcorbett
+ * @version 1.0
+ */
 import java.util.*;
 public class CarLotManager 
 {
