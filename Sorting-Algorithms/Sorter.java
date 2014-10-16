@@ -8,45 +8,15 @@
 import java.util.*;
 
 public class Sorter<T extends Comparable<T>> 
-{
-	//******************************************
-	//Creating global variables
-	//******************************************
-	private Random generator;
-	private int[] small, medium, big;
-	
+{	
 	public Sorter() 
 	{
-		//*********************************************************
-		//Establishes the random object and fills the three arrays
-		//*********************************************************
-		generator = new Random();
-		small = new int[100];
-		medium = new int[250];
-		big = new int[500];
-		
-		//Fills the small array with random numbers
-		for(int i=0; i<small.length; i++)
-		{
-			small[i] = generator.nextInt(1000);
-		}
-		
-		//Fills the medium array with random numbers
-		for(int i=0; i<medium.length; i++)
-		{
-			medium[i] = generator.nextInt(1000);
-		}
-		
-		//Fills the big array with random numbers
-		for(int i=0; i<medium.length; i++)
-		{
-			big[i] = generator.nextInt(1000);
-		}
 	}
 	
 	//****************************************************************************
 	// 							SELECTION SORT ALGORITHM
 	//****************************************************************************
+	
 	/**
 	 * Sorts the given array of numbers using the selection sort algorithm.
 	 * 
@@ -108,6 +78,7 @@ public class Sorter<T extends Comparable<T>>
 	{
 		quickSort(data, 0, data.length -1);
 	}
+	
 	/**
 	 * Uses recursion to sort a range of objects in the specified array using the quick sort algorithm.
 	 * 
@@ -115,6 +86,7 @@ public class Sorter<T extends Comparable<T>>
 	 * @param min the minimum index in the range to be sorted
 	 * @param max the maximum index in the range to be sorted
 	 */
+	
 	private static <T extends Comparable<T>> void quickSort(T[] data, int min, int max)
 	{
 		if (min < max)
@@ -134,6 +106,7 @@ public class Sorter<T extends Comparable<T>>
 	// Supporting method for the quick sort algorithm. 
 	//
 	//***********************************************************
+	
 	/**
 	 * Quick sort supporting method.
 	 * 
@@ -190,6 +163,7 @@ public class Sorter<T extends Comparable<T>>
 	//****************************************************************************
 	// 							BUBBLE SORT ALGORITHM
 	//****************************************************************************
+	
 	/**
 	 * Sorts a given array of objects using a bubble sort algorithm.
 	 * 
@@ -198,7 +172,7 @@ public class Sorter<T extends Comparable<T>>
 	public static <T extends Comparable<T>> void bubbleSort(T[] data)
 	{
 		int position, scan;
-		T temp;
+		//T temp;
 		
 		for(position = data.length; position >= 0; position--)
 		{
@@ -225,9 +199,10 @@ public class Sorter<T extends Comparable<T>>
 	}
 	
 	
-	//****************************************************************************
-	// 							MERGE SORT SUPPORTING METHOD
-	//****************************************************************************
+	//*********************************************************
+	// 							Merge sort support methods
+	//*********************************************************
+	
 	/**
 	 * Uses recursion to sort a range of objects in the give array using the merge sort algorithm.
 	 * 
@@ -245,6 +220,7 @@ public class Sorter<T extends Comparable<T>>
 			merge(data, min, mid, max);
 		}
 	}
+	
 	/**
 	 * Merges two sorted subarrays of the specified array.
 	 * 
@@ -309,6 +285,8 @@ public class Sorter<T extends Comparable<T>>
 	//****************************************************************************
 	// 							RADIX SORT ALGORITHM
 	//****************************************************************************
+	
+	@SuppressWarnings("unchecked")
 	public void radixSort(int[] data)
 	{
 		int[] array = data;
@@ -349,14 +327,159 @@ public class Sorter<T extends Comparable<T>>
 	//****************************************************************************
 	// 							GNOME SORT ALGORITHM
 	//****************************************************************************
+	
+	/**
+	 * Sorts an array of objects by comparing objects side by side, but once encountering a 
+	 * value that needs to be swapped, it goes backwards through the array to ensure that all values
+	 * are sorted all the way back to index 0.
+	 * 
+	 * @param data the given array to be sorted
+	 */
 	public static <T extends Comparable<T>> void gnomeSort(T[] data)
 	{
+		for(int index=1; index < data.length;)
+		{
+			if (data[index-1].compareTo(data[index]) <= 0)
+				index++;
+			else
+			{
+				swap(data, index, (index - 1));
+				index--;
+				if(index == 0)
+					index = 1;
+			}	
+		}
+	}
+	
+	//****************************************************************************
+	// 							BOGO SORT ALGORITHM
+	//****************************************************************************
+	
+	/**
+	 * Takes a given array checks if it is sorted, if not it randomly shuffles the numbers
+	 * and checks again. Bogo is short for bogus, becaus that what this sorting algorithm
+	 * is! 
+	 * 
+	 * @param data the given array to be shuffled. 
+	 */
+	public static <T extends Comparable<T>> void bogoSort(T[] data)
+	{
+		while (!isSorted(data))
+		{
+			shuffle(data);
+		}
+	}
+	//****************************************************************************
+	// 							Supporting methods for Bogo Sort
+	//****************************************************************************
+	
+	/**
+	 * Checks to see if the given array is sorted.
+	 * 
+	 * @param data the given array to be sorted
+	 * @return true if it is sorted or false if not
+	 */
+	private static <T extends Comparable<T>> boolean isSorted(T[] data)
+	{
+		for (int i=0; i<data.length - 1; i++)
+		{
+			if (data[i].compareTo(data[i]) > 0)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	/**
+	 * Performs a random shuffle of the values in a given array.
+	 * 
+	 * @param data the given array to be shuffled
+	 */
+	public static <T extends Comparable<T>> void shuffle(T[] data)
+	{
+		for (int i=0; i< data.length - 1; i++)
+		{
+			int range = data.length - 1 -(i+ 1) + 1;
+			int j = (int) (Math.random() * range + (i + 1));
+			swap(data, i, j);
+		}
+	}
+	//****************************************************************************
+	// 							End of Supporting methods for Bogo Sort
+	//****************************************************************************	
+	
+	
+	//****************************************************************************
+	// 							COCKTAIL SORT ALGORITHM
+	//****************************************************************************
+	
+	/**
+	 * Uses a bubble sort to sort through an array linearly, then uses a reverse bubble sort
+	 * to sort backwards through the list linearly.
+	 * 
+	 * @param data the given array to be sorted
+	 */
+	public static <T extends Comparable<T>> void cocktailSort(T[] data)
+	{
+		boolean switched = true;
+		int i = 0;
+		int j = data.length - 1;
 		
+		while(i < j && switched)
+		{
+			switched = false;
+			for(int k = i; k < j; k++)
+			{
+				if(data[k].compareTo(data[k + 1]) > 0)
+				{
+					swap(data, k, (k+1));
+					switched = true;
+				}
+			}
+			j--;
+			if(switched)
+			{
+				switched = false;
+				for(int k = j; k > i; k++)
+				{
+					swap(data, k, (k-1));
+				}
+			}
+		}
+	}
+	
+	//****************************************************************************
+	// 							SHELL SORT ALGORITHM
+	//****************************************************************************
+	
+	/**
+	 * Sorts an array of objects by comparing objects at far ends of the array and shorting the 
+	 * gap between them.
+	 * 
+	 * @param data given array to be sorted.
+	 */
+	public static <T extends Comparable<T>> void shellSort(T[] data)
+	{
+		for (int gap = data.length/2; gap > 0; gap /= 2)
+		{
+			for(int i = gap; i < data.length; i++)
+			{
+				T val = data[i];
+				int j;
+				for(j = i; j >= gap && data[j - gap].compareTo(val) > 0; j -= gap)
+				{
+					data[j] = data[j - gap];
+				}
+				data[j] = val;
+				}
+			}
 	}
 	
 	//****************************************************************************
 	// 							SWAP METHOD USED FOR SWITCHING VALUES
 	//****************************************************************************
+	
 	/**
 	 * The swapping method that will be used by various sort algorithms to handle the actually
 	 * reposition of values in the array
@@ -371,5 +494,4 @@ public class Sorter<T extends Comparable<T>>
 		data[index1] = data[index2];
 		data[index2] = temp;
 	}
-
 }
