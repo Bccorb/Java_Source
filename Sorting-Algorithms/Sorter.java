@@ -3,16 +3,284 @@
  * ways to sort through, providing time feed back on each of the arrays time to be sorted.
  * 
  * @author Brandon Corbett
- * @Version 1.0
+ * @Version 1.2
  */
 import java.util.*;
 
-public class Sorter<T extends Comparable<T>> 
+public class Sorter 
 {	
+	static Scanner in;
+	
 	public Sorter() 
 	{
 	}
 	
+	public static int displayMenu()
+	{
+		in = new Scanner(System.in);
+
+		System.out.print("\t\t1. Selection Sort\n\t\t2. Insertion Sort\n\t\t3. Quick Sort\n\t\t4. Bubble Sort\n\t\t5. Merge Sort\n\t\t"
+			+ "6. Radix Sort\n\t\t7. Gnome Sort\n\t\t8. Cocktail Sort\n\t\t9. Shell Sort\n\t\t10.BOGO Sort\n\t\tEnter the type of sort to compare(0 to end): ");
+	
+		int selection = in.nextInt();
+	
+		return selection;
+	}
+
+	public static void runSortStats(int sortNum, int[] data1, int[] data2, int[] data3)
+	{	
+		long startTime, endTime, smalltotalTime, mediumtotalTime, bigtotalTime;
+		switch(sortNum)
+		{
+			case 1:
+				startTime = System.currentTimeMillis();
+				Sorter.selectionSort(data1);
+				endTime = System.currentTimeMillis();
+				smalltotalTime = endTime - startTime;
+					
+				startTime = System.currentTimeMillis();
+				Sorter.selectionSort(data2);
+				endTime = System.currentTimeMillis();
+				mediumtotalTime = endTime - startTime;
+					
+				startTime = System.currentTimeMillis();
+				Sorter.selectionSort(data3);
+				endTime = System.currentTimeMillis();
+				bigtotalTime = endTime - startTime;
+					
+				System.out.println();
+
+				System.out.println("\t\tSELECTION SORT STATICS\n"
+							+ "\t--------------------------------------------\n"
+							+ "\t\tTime for sorting 100 numbers: " + smalltotalTime + "\n\t\tTime for sorting 250 numbers: " + mediumtotalTime + 
+							  "\n\t\tTime for sorting 500 numbers: " + bigtotalTime + ".");
+				System.out.println();
+				break;
+			case 2:
+				startTime = System.currentTimeMillis();
+				Sorter.insertionSort(data1);
+				endTime = System.currentTimeMillis();
+				smalltotalTime = endTime - startTime;
+					
+				startTime = System.currentTimeMillis();
+				Sorter.insertionSort(data2);
+				endTime = System.currentTimeMillis();
+				mediumtotalTime = endTime - startTime;
+					
+				startTime = System.currentTimeMillis();
+				Sorter.insertionSort(data3);
+				endTime = System.currentTimeMillis();
+				bigtotalTime = endTime - startTime;
+					
+				System.out.println();
+
+				System.out.println("\t\tINSERTION SORT STATICS\n"
+						+ "\t--------------------------------------------\n"
+						+ "\t\tTime for sorting 100 numbers: " + smalltotalTime + "\n\t\tTime for sorting 250 numbers: " + mediumtotalTime + 
+							  "\n\t\tTime for sorting 500 numbers: " + bigtotalTime + ".");
+				System.out.println();
+				break;
+			case 3:
+				startTime = System.currentTimeMillis();
+				Sorter.quickSort(data1);
+				endTime = System.currentTimeMillis();
+				smalltotalTime = endTime - startTime;
+					
+				startTime = System.currentTimeMillis();
+				Sorter.quickSort(data2);
+				endTime = System.currentTimeMillis();
+				mediumtotalTime = endTime - startTime;
+					
+				startTime = System.currentTimeMillis();
+				Sorter.quickSort(data3);
+				endTime = System.currentTimeMillis();
+				bigtotalTime = endTime - startTime;
+					
+				System.out.println();
+
+				System.out.println("\t\tQUICK SORT STATICS\n"
+						+ "\t--------------------------------------------\n"
+						+ "\t\tTime for sorting 100 numbers: " + smalltotalTime + "\n\t\tTime for sorting 250 numbers: " + mediumtotalTime + 
+							  "\n\t\tTime for sorting 500 numbers: " + bigtotalTime + ".");
+				System.out.println();
+				break;
+			case 4:
+				startTime = System.currentTimeMillis();
+				Sorter.bubbleSort(data1);
+				endTime = System.currentTimeMillis();
+				smalltotalTime = endTime - startTime;
+					
+				startTime = System.currentTimeMillis();
+				Sorter.bubbleSort(data2);
+				endTime = System.currentTimeMillis();
+				mediumtotalTime = endTime - startTime;
+					
+				startTime = System.currentTimeMillis();
+				Sorter.bubbleSort(data3);
+				endTime = System.currentTimeMillis();
+				bigtotalTime = endTime - startTime;
+					
+				System.out.println();
+
+				System.out.println("\t\tBUBBLE SORT STATICS\n"
+						+ "\t--------------------------------------------\n"
+						+ "\t\tTime for sorting 100 numbers: " + smalltotalTime + "\n\t\tTime for sorting 250 numbers: " + mediumtotalTime + 
+							  "\n\t\tTime for sorting 500 numbers: " + bigtotalTime + ".");
+				System.out.println();
+				break;
+			case 5:
+				startTime = System.currentTimeMillis();
+				Sorter.mergeSort(data1);
+				endTime = System.currentTimeMillis();
+				smalltotalTime = endTime - startTime;
+					
+				startTime = System.currentTimeMillis();
+				Sorter.mergeSort(data2);
+				endTime = System.currentTimeMillis();
+				mediumtotalTime = endTime - startTime;
+					
+				startTime = System.currentTimeMillis();
+				Sorter.mergeSort(data3);
+				endTime = System.currentTimeMillis();
+				bigtotalTime = endTime - startTime;
+					
+				System.out.println();
+
+				System.out.println("\t\tMERGE SORT STATICS\n"
+						+ "\t--------------------------------------------\n"
+						+ "\t\tTime for sorting 100 numbers: " + smalltotalTime + "\n\t\tTime for sorting 250 numbers: " + mediumtotalTime + 
+							  "\n\t\tTime for sorting 500 numbers: " + bigtotalTime + ".");
+				System.out.println();
+				break;
+			case 6:
+				startTime = System.currentTimeMillis();
+				Sorter.radixSort(data1);
+				endTime = System.currentTimeMillis();
+				smalltotalTime = endTime - startTime;
+					
+				startTime = System.currentTimeMillis();
+				Sorter.radixSort(data2);
+				endTime = System.currentTimeMillis();
+				mediumtotalTime = endTime - startTime;
+					
+				startTime = System.currentTimeMillis();
+				Sorter.radixSort(data3);
+				endTime = System.currentTimeMillis();
+				bigtotalTime = endTime - startTime;
+					
+				System.out.println();
+
+				System.out.println("\t\tRADIX SORT STATICS\n"
+						+ "\t--------------------------------------------\n"
+						+ "\t\tTime for sorting 100 numbers: " + smalltotalTime + "\n\t\tTime for sorting 250 numbers: " + mediumtotalTime + 
+							  "\n\t\tTime for sorting 500 numbers: " + bigtotalTime + ".");
+				System.out.println();
+				break;
+			case 7:
+				startTime = System.currentTimeMillis();
+				Sorter.gnomeSort(data1);
+				endTime = System.currentTimeMillis();
+				smalltotalTime = endTime - startTime;
+					
+				startTime = System.currentTimeMillis();
+				Sorter.gnomeSort(data2);
+				endTime = System.currentTimeMillis();
+				mediumtotalTime = endTime - startTime;
+					
+				startTime = System.currentTimeMillis();
+				Sorter.gnomeSort(data3);
+				endTime = System.currentTimeMillis();
+				bigtotalTime = endTime - startTime;
+					
+				System.out.println();
+
+				System.out.println("\t\tGNOME SORT STATICS\n"
+						+ "\t--------------------------------------------\n"
+						+ "\t\tTime for sorting 100 numbers: " + smalltotalTime + "\n\t\tTime for sorting 250 numbers: " + mediumtotalTime + 
+							  "\n\t\tTime for sorting 500 numbers: " + bigtotalTime + ".");
+				System.out.println();
+				break;
+			case 8:
+				startTime = System.currentTimeMillis();
+				Sorter.cocktailSort(data1);
+				endTime = System.currentTimeMillis();
+				smalltotalTime = endTime - startTime;
+					
+				startTime = System.currentTimeMillis();
+				Sorter.cocktailSort(data2);
+				endTime = System.currentTimeMillis();
+				mediumtotalTime = endTime - startTime;
+					
+				startTime = System.currentTimeMillis();
+				Sorter.cocktailSort(data3);
+				endTime = System.currentTimeMillis();
+				bigtotalTime = endTime - startTime;
+					
+				System.out.println();
+
+				System.out.println("\t\tCOCKTAIL SORT STATICS\n"
+						+ "\t--------------------------------------------\n"
+						+ "\t\tTime for sorting 100 numbers: " + smalltotalTime + "\n\t\tTime for sorting 250 numbers: " + mediumtotalTime + 
+							  "\n\t\tTime for sorting 500 numbers: " + bigtotalTime + ".");
+				System.out.println();
+				break;
+			case 9:
+				startTime = System.currentTimeMillis();
+				Sorter.shellSort(data1);
+				endTime = System.currentTimeMillis();
+				smalltotalTime = endTime - startTime;
+					
+				startTime = System.currentTimeMillis();
+				Sorter.shellSort(data2);
+				endTime = System.currentTimeMillis();
+				mediumtotalTime = endTime - startTime;
+					
+				startTime = System.currentTimeMillis();
+				Sorter.shellSort(data3);
+				endTime = System.currentTimeMillis();
+				bigtotalTime = endTime - startTime;
+					
+				System.out.println();
+
+				System.out.println("\t\tSHELL SORT STATICS\n"
+						+ "\t--------------------------------------------\n"
+						+ "\t\tTime for sorting 100 numbers: " + smalltotalTime + "\n\t\tTime for sorting 250 numbers: " + mediumtotalTime + 
+							  "\n\t\tTime for sorting 500 numbers: " + bigtotalTime + ".");
+				System.out.println();
+				break;
+			case 10:
+				startTime = System.currentTimeMillis();
+				Sorter.bogoSort(data1);
+				endTime = System.currentTimeMillis();
+				smalltotalTime = endTime - startTime;
+					
+				startTime = System.currentTimeMillis();
+				Sorter.bogoSort(data2);
+				endTime = System.currentTimeMillis();
+				mediumtotalTime = endTime - startTime;
+					
+				startTime = System.currentTimeMillis();
+				Sorter.bogoSort(data3);
+				endTime = System.currentTimeMillis();
+				bigtotalTime = endTime - startTime;
+					
+				System.out.println();
+
+				System.out.println("\t\tBOGO SORT STATICS\n"
+						+ "\t--------------------------------------------\n"
+						+ "\t\tTime for sorting 100 numbers: " + smalltotalTime + "\n\t\tTime for sorting 250 numbers: " + mediumtotalTime + 
+							  "\n\t\tTime for sorting 500 numbers: " + bigtotalTime + ".");
+				System.out.println();
+				break;
+			case 0:
+				System.out.println();
+				break;
+			default :
+				System.out.println("Error in Entry. Please try again. Must be one of the number selections!");
+				System.out.println();
+				break;
+			}
+		}
 	//****************************************************************************
 	// 							SELECTION SORT ALGORITHM
 	//****************************************************************************
@@ -22,17 +290,16 @@ public class Sorter<T extends Comparable<T>>
 	 * 
 	 * @param data the array to be sorted
 	 */
-	public static <T extends Comparable<T>> void selectionSort(T[] data)
+	public static void selectionSort(int[] data)
 	{
 		int min;
-		//T temp;
 		
-		for (int index=0; index< data.length-1; index++)
+		for (int index=0; index < data.length-1; index++)
 		{
 			min = index;
-			for (int scan = index+1; scan<data.length; scan++)
+			for (int scan = index + 1; scan < data.length; scan++)
 			{
-				if(data[scan].compareTo(data[min])<0)
+				if(data[scan] < data[min])
 					min=scan;
 				
 				swap(data, min, index);
@@ -49,19 +316,20 @@ public class Sorter<T extends Comparable<T>>
 	 * 
 	 * @param data the array to be sorted
 	 */
-	public static <T extends Comparable<T>> void insertionSort(T[] data)
+	public static void insertionSort(int[] data)
 	{
 		for (int index = 1; index < data.length; index++)
 		{
-			T key = data[index];
+			int key = data[index];
 			int position = index;
 			
 			//Shifts larger values to the right
-			while(position > 0 && data[position-1].compareTo(key)> 0)
+			while(position > 0 && data[position - 1] > key)
 			{
-				data[position] = data[position-1];
+				data[position] = data[position - 1];
 				position--;
 			}
+			data[position] = key;
 		}
 	}
 	
@@ -74,9 +342,9 @@ public class Sorter<T extends Comparable<T>>
 	 * 
 	 * @param data the array to be sorted
 	 */
-	public static <T extends Comparable<T>> void quickSort(T [] data)
+	public static void quickSort(int[] data)
 	{
-		quickSort(data, 0, data.length -1);
+		quickSort(data, 0, data.length - 1);
 	}
 	
 	/**
@@ -87,7 +355,7 @@ public class Sorter<T extends Comparable<T>>
 	 * @param max the maximum index in the range to be sorted
 	 */
 	
-	private static <T extends Comparable<T>> void quickSort(T[] data, int min, int max)
+	private static void quickSort(int[] data, int min, int max)
 	{
 		if (min < max)
 		{
@@ -115,9 +383,9 @@ public class Sorter<T extends Comparable<T>>
 	 * @param max the maximum index in the range sorted
 	 * @return
 	 */
-	private static <T extends Comparable<T>> int partition(T[] data, int min, int max)
+	private static int partition(int[] data, int min, int max)
 	{
-		T partitionElement;
+		int partitionElement;
 		int left, right;
 		
 		int middle = (min + max) / 2;
@@ -135,12 +403,12 @@ public class Sorter<T extends Comparable<T>>
 		{
 			// searches for an element that is greater than the partition element
 			
-			while(left < right && data[left].compareTo(partitionElement) <= 0)
+			while(left < right && data[left] <= partitionElement)
 				left++;
 			
 			//searches for an element that is less than the partition element
 			
-			while (data[right].compareTo(partitionElement) > 0)
+			while (data[right] > partitionElement)
 				right--;
 			
 			//swaps the elements
@@ -169,16 +437,15 @@ public class Sorter<T extends Comparable<T>>
 	 * 
 	 * @param data the array to be sorted
 	 */
-	public static <T extends Comparable<T>> void bubbleSort(T[] data)
+	public static void bubbleSort(int[] data)
 	{
 		int position, scan;
-		//T temp;
 		
-		for(position = data.length; position >= 0; position--)
+		for(position = data.length - 1; position >= 0; position--)
 		{
-			for(scan = 0; scan <= position-1; scan++)
+			for(scan = 0; scan <= position - 1; scan++)
 			{
-				if(data[scan].compareTo(data[scan++]) > 0)
+				if(data[scan] > data[scan + 1])
 					swap(data, scan, scan + 1);
 			}
 		}
@@ -193,7 +460,7 @@ public class Sorter<T extends Comparable<T>>
 	 * 
 	 * @param data the array to be sorted
 	 */
-	public static <T extends Comparable<T>> void mergeSort(T[] data)
+	public static void mergeSort(int[] data)
 	{
 		mergeSort(data, 0, data.length -1);
 	}
@@ -210,7 +477,7 @@ public class Sorter<T extends Comparable<T>>
 	 * @param min the index of the first element
 	 * @param max the index of the last element
 	 */
-	private static <T extends Comparable <T>> void mergeSort(T[]data, int min, int max)
+	private static void mergeSort(int[]data, int min, int max)
 	{
 		if (min < max)
 		{
@@ -229,10 +496,9 @@ public class Sorter<T extends Comparable<T>>
 	 * @param mid the ending index of the first subarray
 	 * @param last the ending index of the second subarray
 	 */
-	@SuppressWarnings("unchecked")
-	private static <T extends Comparable<T>> void merge(T [] data, int first, int mid, int last)
+	private static void merge(int[] data, int first, int mid, int last)
 	{
-		T[] temp = (T[]) (new Comparable[data.length]);
+		int[] temp = new int[data.length];
 		
 		int first1 = first, last1 = mid; //endpoints of the first subarray
 		int first2 = mid+1, last2 = last; //endpoints of the second subarry
@@ -242,7 +508,7 @@ public class Sorter<T extends Comparable<T>>
 		
 		while(first1 <= last1 && first2 <- last2)
 		{
-			if (data[first].compareTo(data[first2]) < 0)
+			if (data[first] < data[first2])
 			{
 				temp[index] = data[first1];
 				first1++;
@@ -287,14 +553,13 @@ public class Sorter<T extends Comparable<T>>
 	//****************************************************************************
 	
 	@SuppressWarnings("unchecked")
-	public void radixSort(int[] data)
+	public static void radixSort(int[] data)
 	{
-		int[] array = data;
 		String temp;
 		Integer numObj;
 		int digit, num;
 		
-		Queue<Integer>[] digitQueues = (LinkedList<Integer>[]) (new LinkedList[array.length]);
+		Queue<Integer>[] digitQueues = (LinkedList<Integer>[]) (new LinkedList[data.length]);
 		for(int digitVal = 0; digitVal <= 9; digitVal++)
 			digitQueues[digitVal] = (Queue<Integer>) (new LinkedList<Integer>());
 		
@@ -302,10 +567,10 @@ public class Sorter<T extends Comparable<T>>
 		
 		for (int position = 0; position <= 3; position++)
 		{
-			for(int scan = 0; scan < array.length; scan++)
+			for(int scan = 0; scan < data.length; scan++)
 			{
-				temp = String.valueOf(array[scan]);
-				digit = Character.digit(temp.charAt(3-position), 10);
+				temp = String.valueOf(data[scan]);
+				digit = Character.digit(temp.charAt(0 + position), 10);
 				digitQueues[digit].add(new Integer(data[scan]));
 			}
 			
@@ -335,11 +600,11 @@ public class Sorter<T extends Comparable<T>>
 	 * 
 	 * @param data the given array to be sorted
 	 */
-	public static <T extends Comparable<T>> void gnomeSort(T[] data)
+	public static void gnomeSort(int[] data)
 	{
 		for(int index=1; index < data.length;)
 		{
-			if (data[index-1].compareTo(data[index]) <= 0)
+			if (data[index-1] <= data[index])
 				index++;
 			else
 			{
@@ -357,12 +622,12 @@ public class Sorter<T extends Comparable<T>>
 	
 	/**
 	 * Takes a given array checks if it is sorted, if not it randomly shuffles the numbers
-	 * and checks again. Bogo is short for bogus, becaus that what this sorting algorithm
+	 * and checks again. Bogus is short for bogus, because that what this sorting algorithm
 	 * is! 
 	 * 
 	 * @param data the given array to be shuffled. 
 	 */
-	public static <T extends Comparable<T>> void bogoSort(T[] data)
+	public static void bogoSort(int[] data)
 	{
 		while (!isSorted(data))
 		{
@@ -379,11 +644,11 @@ public class Sorter<T extends Comparable<T>>
 	 * @param data the given array to be sorted
 	 * @return true if it is sorted or false if not
 	 */
-	private static <T extends Comparable<T>> boolean isSorted(T[] data)
+	private static boolean isSorted(int[] data)
 	{
-		for (int i=0; i<data.length - 1; i++)
+		for (int i=0; i < data.length - 1; i++)
 		{
-			if (data[i].compareTo(data[i]) > 0)
+			if (data[i] < data[i + 1])
 			{
 				return false;
 			}
@@ -396,17 +661,17 @@ public class Sorter<T extends Comparable<T>>
 	 * 
 	 * @param data the given array to be shuffled
 	 */
-	public static <T extends Comparable<T>> void shuffle(T[] data)
+	public static void shuffle(int[] data)
 	{
-		for (int i=0; i< data.length - 1; i++)
+		for (int i=0; i < data.length - 1; i++)
 		{
-			int range = data.length - 1 -(i+ 1) + 1;
-			int j = (int) (Math.random() * range + (i + 1));
-			swap(data, i, j);
+			Random gen = new Random();
+			int range = gen.nextInt(data.length);
+			swap(data, i, range);
 		}
 	}
 	//****************************************************************************
-	// 							End of Supporting methods for Bogo Sort
+	// 							End of Supporting methods for Bogus Sort
 	//****************************************************************************	
 	
 	
@@ -420,7 +685,7 @@ public class Sorter<T extends Comparable<T>>
 	 * 
 	 * @param data the given array to be sorted
 	 */
-	public static <T extends Comparable<T>> void cocktailSort(T[] data)
+	public static void cocktailSort(int[] data)
 	{
 		boolean switched = true;
 		int i = 0;
@@ -431,9 +696,9 @@ public class Sorter<T extends Comparable<T>>
 			switched = false;
 			for(int k = i; k < j; k++)
 			{
-				if(data[k].compareTo(data[k + 1]) > 0)
+				if(data[k] > data[k + 1])
 				{
-					swap(data, k, (k+1));
+					swap(data, k, k + 1);
 					switched = true;
 				}
 			}
@@ -441,12 +706,17 @@ public class Sorter<T extends Comparable<T>>
 			if(switched)
 			{
 				switched = false;
-				for(int k = j; k > i; k++)
+				for(int k = j; k > i; k--)
 				{
-					swap(data, k, (k-1));
+					if(data[k] < data[k - 1])
+					{
+						swap(data, k, k - 1);
+						switched = true;
+					}
 				}
 			}
 		}
+		i++;
 	}
 	
 	//****************************************************************************
@@ -459,15 +729,15 @@ public class Sorter<T extends Comparable<T>>
 	 * 
 	 * @param data given array to be sorted.
 	 */
-	public static <T extends Comparable<T>> void shellSort(T[] data)
+	public static void shellSort(int[] data)
 	{
 		for (int gap = data.length/2; gap > 0; gap /= 2)
 		{
 			for(int i = gap; i < data.length; i++)
 			{
-				T val = data[i];
+				int val = data[i];
 				int j;
-				for(j = i; j >= gap && data[j - gap].compareTo(val) > 0; j -= gap)
+				for(j = i; j >= gap && data[j - gap] > (val); j -= gap)
 				{
 					data[j] = data[j - gap];
 				}
@@ -488,10 +758,11 @@ public class Sorter<T extends Comparable<T>>
 	 * @param index1 the index of the first element to be swapped
 	 * @param index2 the index of the second element to be swapped
 	 */
-	private static <T extends Comparable<T>> void swap(T[] data, int index1, int index2)
+	private static void swap(int[] data, int index1, int index2)
 	{
-		T temp = data[index1];
+		int temp = data[index1];
 		data[index1] = data[index2];
 		data[index2] = temp;
 	}
 }
+
