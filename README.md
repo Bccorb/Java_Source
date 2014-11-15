@@ -1,6 +1,9 @@
 Java Source
 =============
 
+A one stop place for advanced Java and computer science practices.
+
+
 Author
 -------------
 Brandon Corbett
