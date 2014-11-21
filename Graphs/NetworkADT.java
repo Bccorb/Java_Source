@@ -1,4 +1,3 @@
-package lab8;
 /**
  * Network interface is the ADT for a network graph implementation
  * 
